@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: youkim <youkim@student.42.fr>              +#+  +:+       +#+         #
+#    By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/14 14:32:23 by youkim            #+#    #+#              #
-#    Updated: 2021/07/08 11:41:41 by youkim           ###   ########.fr        #
+#    Updated: 2021/08/10 20:31:57 by youkim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCLST	=	memset bzero memcpy memccpy memmove memchr memcmp\
 			strlen strlcpy strlcat strchr strrchr strnstr strncmp atoi\
 			substr strjoin strtrim split itoa itoa_base strmapi\
 			putchar_fd putstr_fd putendl_fd \
-			putnbr_fd math # actual custom
+			putnbr_fd math exit # actual custom
 SRCLSB	=	new add_front size last add_back delone clear iter map
 SRCLSC  =	abs sign islower isupper purge2str
 

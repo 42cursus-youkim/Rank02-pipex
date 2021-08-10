@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youkim <youkim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 22:12:11 by youkim            #+#    #+#             */
-/*   Updated: 2021/07/08 11:43:24 by youkim           ###   ########.fr       */
+/*   Updated: 2021/08/10 20:31:25 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,5 @@ char	*ft_itoa_base(long long n, char *baseset);
 int		ft_min(int a, int b);
 int		ft_max(int a, int b);
 int		ft_abs(int n);
+void	ft_exit(int status, char *error);
 #endif

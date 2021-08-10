@@ -12,6 +12,8 @@
 
 #include "ft_pipex.h"
 
-void	ft_pipex(int argc, char **argv)
+void ft_pipex(int argc, char **argv)
 {
+
+	return;
 }

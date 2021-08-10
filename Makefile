@@ -31,7 +31,7 @@ $(NAME): $(OBJ)
 
 all: $(NAME)
 
-bonus: all
+# bonus: all
 
 clean:
 	make clean -C $(LIBFT)
@@ -53,4 +53,4 @@ leak: test
 
 retest: re test
 
-.PHONY: all clean fclean re test bonus
+.PHONY: all clean fclean re test # bonus
