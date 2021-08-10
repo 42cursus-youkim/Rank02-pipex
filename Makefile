@@ -12,8 +12,14 @@
 
 NAME = pipex
 
+LIBFT = libft
+
 CC = gcc
 CFLAGS = # -Wall -Wextra -Werror
+
+SRR = pipex
+SRC = $(addprefix ./ft_, $(addsuffix .c, $(SRR)))
+OBJ = $(SRC:%.c=%.o)
 
 define make_libft
 	make all -C $(LIBFT)/
@@ -25,7 +31,7 @@ endef
 
 $(NAME): $(OBJ)
 	$(call make_libft)
-	$(AR) $@ $^
+	$(CC) $(CFLAGS) -o $@ $^ ./$(LIBFT)/$(LIBFT).a
 # 	$@ -> curr. target. name
 # 	$^ -> curr. dependancy. list
 

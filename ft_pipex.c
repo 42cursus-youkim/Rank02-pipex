@@ -12,8 +12,9 @@
 
 #include "ft_pipex.h"
 
-void ft_pipex(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-
-	return;
+	if (argc != 5)
+		ft_exit(0, "to use: ./pipex inflie cmd1 cmd2 outfile");
+	ft_exit(0, "");
 }

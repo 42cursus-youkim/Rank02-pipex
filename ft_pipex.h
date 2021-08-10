@@ -14,7 +14,7 @@
 # define PIPEX_H
 
 # include "./libft/libft.h"
+# include <unistd.h> // libft에 정의되어있는데 그대로 해야 하나?
 
-void	ft_pipex(int argc, char **argv);
 
 #endif
