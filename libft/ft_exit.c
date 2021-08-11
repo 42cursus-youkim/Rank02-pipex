@@ -6,7 +6,7 @@
 /*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 15:50:07 by youkim            #+#    #+#             */
-/*   Updated: 2021/08/11 16:28:19 by youkim           ###   ########.fr       */
+/*   Updated: 2021/08/11 17:28:32 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void ft_error(char *error)
 	char *s;
 
 	e = ft_strjoin(error, "\n");
-	s = ft_strjoin("Error\nwhile: ", e);
+	s = ft_strjoin("Error\n: ", e);
 	ft_putstr_fd(2, s);
 	if (e)
 		free(e);

@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_purge2str_bonus.c                               :+:      :+:    :+:   */
+/*   ft_purge2str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youkim <youkim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 20:40:36 by youkim            #+#    #+#             */
-/*   Updated: 2021/07/03 11:47:48 by youkim           ###   ########.fr       */
+/*   Updated: 2021/08/11 17:25:14 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	**ft_purge2str_bonus(char **str2d)
+char	**ft_purge2str(char **str2d)
 {
 	size_t	i;
 
-	i = 0;
-	while (str2d[i])
-		free(str2d[i++]);
+	i = -1;
+	while (str2d[++i])
+		free(str2d[i]);
 	free(str2d);
 	return (0);
 }

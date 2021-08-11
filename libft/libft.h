@@ -6,7 +6,7 @@
 /*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 22:12:11 by youkim            #+#    #+#             */
-/*   Updated: 2021/08/11 15:49:58 by youkim           ###   ########.fr       */
+/*   Updated: 2021/08/11 17:25:32 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 */
 int		ft_isupper_bonus(int c);
 int		ft_islower_bonus(int c);
-char	**ft_purge2str_bonus(char **str2d);
+char	**ft_purge2str(char **str2d);
 int		ft_sign_bonus(long n);
 long	ft_abs_bonus(long n);
 int		ft_putchar(char c);
