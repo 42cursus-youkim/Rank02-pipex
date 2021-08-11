@@ -2,5 +2,7 @@ test
 main
 file*
 *.o
-pipex
 libft.a
+pipex
+pipex_medic
+pipex_tester

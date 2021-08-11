@@ -13,9 +13,12 @@
 NAME = pipex
 
 LIBFT = libft
+LIBFT_PATH = ./$(LIBFT)/$(LIBFT).a
 
 CC = gcc
 CFLAGS = # -Wall -Wextra -Werror
+
+RM = rm -rf
 
 SRR = pipex
 SRC = $(addprefix ./ft_, $(addsuffix .c, $(SRR)))
@@ -26,12 +29,14 @@ define make_libft
 	cp $(LIBFT)/$(LIBFT).a $(NAME)
 endef
 
+TEST_ARG = file1 ``cat'' ``cat'' file2
+
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 $(NAME): $(OBJ)
 	$(call make_libft)
-	$(CC) $(CFLAGS) -o $@ $^ ./$(LIBFT)/$(LIBFT).a
+	$(CC) $(CFLAGS) -o $@ $^ $(LIBFT_PATH)
 # 	$@ -> curr. target. name
 # 	$^ -> curr. dependancy. list
 
@@ -50,12 +55,10 @@ fclean: clean
 re: fclean all
 
 test: all
-	$(CC) $(CFLAGS) -c -o main.o main.c
-	$(CC) -o test.out -L. $(NAME) main.o
-	./test.out
+	./$(NAME) $(TEST_ARG)
 
-leak: test
-	valgrind --leak-check=full ./test.out
+leak: all
+	valgrind --leak-check=full ./$(NAME) $(TEST_ARG)
 
 retest: re test
 

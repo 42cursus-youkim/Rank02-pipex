@@ -13,8 +13,22 @@
 #ifndef PIPEX_H
 # define PIPEX_H
 
+# include <fcntl.h>
+# include <sys/types.h>
 # include "./libft/libft.h"
-# include <unistd.h> // libft에 정의되어있는데 그대로 해야 하나?
 
+typedef struct s_info
+{
+	int		infd;
+	int		outfd;
+	int		pipefd[2];
+	pid_t	pid;
+} t_info;
+
+void ft_pipex(int argc, char **argv);
+
+# define OK 0
+# define CHILD 0
+# define ERROR -1
 
 #endif
