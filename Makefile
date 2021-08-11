@@ -19,7 +19,7 @@ CC = gcc
 CFLAGS = # -Wall -Wextra -Werror
 RM = rm -rf
 
-SRR = pipex pipeutil
+SRR = pipex pipeutil pathutil
 SRC = $(addprefix ./ft_, $(addsuffix .c, $(SRR)))
 OBJ = $(SRC:%.c=%.o)
 
