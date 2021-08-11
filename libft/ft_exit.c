@@ -6,15 +6,14 @@
 /*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 20:22:40 by youkim            #+#    #+#             */
-/*   Updated: 2021/08/10 20:27:52 by youkim           ###   ########.fr       */
+/*   Updated: 2021/08/11 14:34:06 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_exit(int status, char *error)
+void ft_exit(char *error)
 {
-	ft_putstr(error);
-	ft_putchar('\n');
-	exit(status);
+	ft_putstr_fd(2, ft_strjoin(error, "\n"));
+	exit(0);
 }

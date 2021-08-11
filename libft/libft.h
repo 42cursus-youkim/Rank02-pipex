@@ -6,7 +6,7 @@
 /*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 22:12:11 by youkim            #+#    #+#             */
-/*   Updated: 2021/08/10 20:45:13 by youkim           ###   ########.fr       */
+/*   Updated: 2021/08/11 14:34:20 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(char *s, int fd);
+void	ft_putstr_fd(int fd, char *s);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 /*
@@ -87,6 +87,6 @@ char	*ft_itoa_base(long long n, char *baseset);
 int		ft_min(int a, int b);
 int		ft_max(int a, int b);
 int		ft_abs(int n);
-void	ft_exit(int status, char *error);
+void	ft_exit(char *error);
 
 #endif
