@@ -17,10 +17,9 @@ LIBFT_PATH = ./$(LIBFT)/$(LIBFT).a
 
 CC = gcc
 CFLAGS = # -Wall -Wextra -Werror
-
 RM = rm -rf
 
-SRR = pipex
+SRR = pipex pipeutil
 SRC = $(addprefix ./ft_, $(addsuffix .c, $(SRR)))
 OBJ = $(SRC:%.c=%.o)
 
@@ -29,7 +28,7 @@ define make_libft
 	cp $(LIBFT)/$(LIBFT).a $(NAME)
 endef
 
-TEST_ARG = file1 ``cat'' ``cat'' file2
+TEST_ARG = file1 "awk '{print $$1}'" ``cat'' file2
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
@@ -41,8 +40,6 @@ $(NAME): $(OBJ)
 # 	$^ -> curr. dependancy. list
 
 all: $(NAME)
-
-# bonus: all
 
 clean:
 	make clean -C $(LIBFT)
@@ -60,6 +57,8 @@ test: all
 leak: all
 	valgrind --leak-check=full ./$(NAME) $(TEST_ARG)
 
+releak: re leak
+
 retest: re test
 
-.PHONY: all clean fclean re test # bonus
+.PHONY: all clean fclean re test

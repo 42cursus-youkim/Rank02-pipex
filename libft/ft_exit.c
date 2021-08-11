@@ -5,15 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/10 20:22:40 by youkim            #+#    #+#             */
-/*   Updated: 2021/08/11 14:34:06 by youkim           ###   ########.fr       */
+/*   Created: 2021/08/11 15:50:07 by youkim            #+#    #+#             */
+/*   Updated: 2021/08/11 16:28:19 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_exit(char *error)
+void ft_error(char *error)
 {
-	ft_putstr_fd(2, ft_strjoin(error, "\n"));
+	char *e;
+	char *s;
+
+	e = ft_strjoin(error, "\n");
+	s = ft_strjoin("Error\nwhile: ", e);
+	ft_putstr_fd(2, s);
+	if (e)
+		free(e);
+	if (s)
+		free(s);
 	exit(0);
 }

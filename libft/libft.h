@@ -6,7 +6,7 @@
 /*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 22:12:11 by youkim            #+#    #+#             */
-/*   Updated: 2021/08/11 14:34:20 by youkim           ###   ########.fr       */
+/*   Updated: 2021/08/11 15:49:58 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,6 @@ char	*ft_itoa_base(long long n, char *baseset);
 int		ft_min(int a, int b);
 int		ft_max(int a, int b);
 int		ft_abs(int n);
-void	ft_exit(char *error);
+void	ft_error(char *error);
 
 #endif
