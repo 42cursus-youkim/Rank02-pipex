@@ -27,26 +27,25 @@
 # include <sys/types.h>
 # include "./libft/libft.h"
 
-extern char **environ;
-
 typedef struct s_info
 {
 	pid_t	pid;
 	int		infd;
 	int		outfd;
 	char	**argslst[2];
+	char	**envp;
 } t_info;
 
 /*
 ** ft_pipex
 */
-void ft_pipex(int argc, char **argv);
+void ft_pipex(int argc, char **argv, char **envp);
 void ft_pipein(t_info *info, int pipefd[2]);
 void ft_pipeout(t_info *info, int pipefd[2]);
 /*
 ** pathutils
 */
-char **ft_getpaths(void);
+char **ft_getpaths(t_info *info);
 void ft_exec(t_info *info, int which);
 
 #endif

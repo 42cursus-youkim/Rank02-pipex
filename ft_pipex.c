@@ -38,13 +38,14 @@ void ft_pipeout(t_info *info, int pipefd[2])
 	close(pipefd[PIPE_READ]);
 }
 
-void ft_pipex(int argc, char **argv)
+void ft_pipex(int argc, char **argv, char **envp)
 {
 	int pipefd[2];
 	t_info info;
 
 	if (argc != 5)
 		ft_error("to use: ./pipex inflie cmd1 cmd2 outfile");
+	info.envp = envp;
 	info.infd = open(argv[1], O_RDONLY);
 	if (info.infd == ERROR)
 		ft_error("while opening input file");
