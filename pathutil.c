@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pathutil.c                                      :+:      :+:    :+:   */
+/*   pathutil.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:17:57 by youkim            #+#    #+#             */
-/*   Updated: 2021/08/11 17:59:12 by youkim           ###   ########.fr       */
+/*   Updated: 2021/08/12 09:00:06 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 char **ft_getpaths(void)
 {
 	int		i;
-	char	**paths;
 
 	i = -1;
 	while(environ[++i])
@@ -28,11 +27,6 @@ char **ft_getpaths(void)
 	return (NULL);
 }
 
-char *getpath()
-{
-
-}
-
 void ft_exec(t_info *info, int which)
 {
 	int i;
@@ -42,9 +36,9 @@ void ft_exec(t_info *info, int which)
 
 	if (info->argslst[which][0][0] == '/')
 	{
-		path = info->argslst[which][0][0];
+		path = info->argslst[which][0];
 		if (execve(path, info->argslst[which], environ) == ERROR)
-			ft_error("Invalid command address");
+			ft_error("invalid path to command");
 		return ;
 	}
 	i = -1;
@@ -58,5 +52,5 @@ void ft_exec(t_info *info, int which)
 		free(temp);
 	}
 	ft_purge2str(paths);
-	ft_error("no valid commands found");
+	ft_error("could not find any matching path for command");
 }

@@ -16,11 +16,14 @@ LIBFT = libft
 LIBFT_PATH = ./$(LIBFT)/$(LIBFT).a
 
 CC = gcc
-CFLAGS = # -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 
-SRR = pipex pipeutil pathutil
-SRC = $(addprefix ./ft_, $(addsuffix .c, $(SRR)))
+DEBUG = gdb
+DFLAGS = -g -ggdb
+VFLAGS = --leak-check=full
+SRR = main ft_pipex pathutil
+SRC = $(addsuffix .c, $(SRR))
 OBJ = $(SRC:%.c=%.o)
 
 define make_libft
@@ -28,7 +31,7 @@ define make_libft
 	cp $(LIBFT)/$(LIBFT).a $(NAME)
 endef
 
-TEST_ARG = file1 "awk '{print $$1}'" ``cat'' file2
+TEST_ARG = infile 'ls' 'wc -l' outfile
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
@@ -55,10 +58,15 @@ test: all
 	./$(NAME) $(TEST_ARG)
 
 leak: all
-	valgrind --leak-check=full ./$(NAME) $(TEST_ARG)
+	valgrind $(VFLAGS) ./$(NAME) $(TEST_ARG)
+
+debug:
+	$(call make_libft)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT_PATH) $(DFLAGS)
+	$(DEBUG) --args ./$(NAME) $(TEST_ARG)
 
 releak: re leak
 
 retest: re test
 
-.PHONY: all clean fclean re test
+.PHONY: all clean fclean re test debug

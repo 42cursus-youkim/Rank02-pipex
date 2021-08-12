@@ -1,8 +1,8 @@
 test
 main
-file*
+*file
 *.o
 libft.a
 pipex
-pipex_medic
-pipex_tester
+pipex_medic/
+pipex-tester/
