@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youkim <youkim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/05 20:59:15 by youkim            #+#    #+#             */
-/*   Updated: 2021/07/03 11:50:23 by youkim           ###   ########.fr       */
+/*   Created: 2021/05/10 12:41:14 by youkim            #+#    #+#             */
+/*   Updated: 2021/08/13 17:50:53 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	st_islower(int c)
+int	ft_putchar(char c)
 {
-	return ('a' <= c && c <= 'z');
+	return (write(1, &c, 1));
 }
 
-static int	st_isupper(int c)
+int	ft_putchar_fd(char c, int fd)
 {
-	return ('A' <= c && c <= 'Z');
-}
-
-int	ft_isalpha(int c)
-{
-	return (st_islower(c) || st_isupper(c));
+	if (fd >= 0 && ft_isascii(c))
+		return (write(fd, &c, 1));
+	return (ERROR);
 }

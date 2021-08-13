@@ -6,7 +6,7 @@
 /*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 22:12:11 by youkim            #+#    #+#             */
-/*   Updated: 2021/08/11 17:25:32 by youkim           ###   ########.fr       */
+/*   Updated: 2021/08/13 17:55:22 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,15 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+# define OK 0
+# define ERROR 1
+
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }					t_list;
-/*
-** PART 1
-*/
+
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
@@ -48,16 +49,14 @@ int		ft_toupper(int c);
 int		ft_tolower(int c);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *s1);
-/*
-** PART 2
-*/
+
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-void	ft_putchar_fd(char c, int fd);
+int		ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(int fd, char *s);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
@@ -76,17 +75,17 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 /*
 ** CUSTOM
 */
-int		ft_isupper_bonus(int c);
-int		ft_islower_bonus(int c);
-char	**ft_purge2str(char **str2d);
-int		ft_sign_bonus(long n);
-long	ft_abs_bonus(long n);
+int		ft_isupper(int c);
+int		ft_islower(int c);
+int		ft_sign(int n);
+int		ft_abs(int n);
+int		ft_min(int a, int b);
+int		ft_max(int a, int b);
+
 int		ft_putchar(char c);
 int		ft_putstr(char *s);
 char	*ft_itoa_base(long long n, char *baseset);
-int		ft_min(int a, int b);
-int		ft_max(int a, int b);
-int		ft_abs(int n);
+char	**ft_purge2str(char **str2d);
 void	ft_error(char *error);
 
 #endif

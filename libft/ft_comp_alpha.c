@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_comp_alpha.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youkim <youkim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/09 11:17:02 by youkim            #+#    #+#             */
-/*   Updated: 2021/07/03 11:45:44 by youkim           ###   ########.fr       */
+/*   Created: 2021/08/13 17:28:16 by youkim            #+#    #+#             */
+/*   Updated: 2021/08/13 17:55:39 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	st_islower(int c)
+int	ft_islower(int c)
 {
 	return ('a' <= c && c <= 'z');
 }
 
-int	ft_toupper(int c)
+int	ft_isupper(int c)
 {
-	if (st_islower(c))
-		return ((c - 'a') + 'A');
-	return (c);
+	return ('A' <= c && c <= 'Z');
+}
+
+int	ft_isalpha(int c)
+{
+	return (ft_islower(c) || ft_isupper(c));
+}
+
+int	ft_isalnum(int c)
+{
+	return (ft_isalpha(c) || ft_isdigit(c));
 }

@@ -32,7 +32,7 @@ define make_libft
 	cp $(LIBFT)/$(LIBFT).a $(NAME)
 endef
 
-TEST_ARG = infile 'ls' 'wc -l' outfile
+TEST_ARG = infile 'awk '\"{count++} END {print count}"\'' 'wc -l' outfile
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
