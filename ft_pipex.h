@@ -13,11 +13,6 @@
 #ifndef FT_PIPEX_H
 # define FT_PIPEX_H
 
-# define OK 0
-# define ERROR -1
-# define STDIN 0
-# define STDOUT 1
-
 # define CHILD 0
 # define PIPE_READ 0
 # define PIPE_WRITE 1

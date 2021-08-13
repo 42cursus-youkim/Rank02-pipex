@@ -6,7 +6,7 @@
 /*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 22:12:11 by youkim            #+#    #+#             */
-/*   Updated: 2021/08/13 17:55:22 by youkim           ###   ########.fr       */
+/*   Updated: 2021/08/13 18:20:21 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 
 # define OK 0
 # define ERROR 1
+# define STDIN 0
+# define STDOUT 1
 
 typedef struct s_list
 {
