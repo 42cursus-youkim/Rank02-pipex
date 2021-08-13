@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#ifndef FT_PIPEX_H
+# define FT_PIPEX_H
 
 # define OK 0
 # define ERROR -1
