@@ -6,13 +6,13 @@
 /*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:17:57 by youkim            #+#    #+#             */
-/*   Updated: 2021/08/12 12:48:14 by youkim           ###   ########.fr       */
+/*   Updated: 2021/08/12 18:08:39 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_pipex.h"
 
-char **ft_getpaths(t_info *info)
+char **ft_getpath(t_info *info)
 {
 	int		i;
 
@@ -20,9 +20,7 @@ char **ft_getpaths(t_info *info)
 	while(info->envp[++i])
 	{
 		if (ft_strncmp(info->envp[i], "PATH", 4) == 0)
-		{
 			return(ft_split(info->envp[i] + 5, ':'));
-		}
 	}
 	return (NULL);
 }
@@ -42,7 +40,7 @@ void ft_exec(t_info *info, int which)
 		return ;
 	}
 	i = -1;
-	paths = ft_getpaths(info);
+	paths = ft_getpath(info);
 	while(paths[++i])
 	{
 		temp = ft_strjoin(paths[i], "/");

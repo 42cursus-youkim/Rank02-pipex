@@ -16,12 +16,13 @@ LIBFT = libft
 LIBFT_PATH = ./$(LIBFT)/$(LIBFT).a
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = # -Wall -Wextra -Werror
 RM = rm -rf
 
 DEBUG = gdb
 DFLAGS = -g -ggdb
 VFLAGS = --leak-check=full
+
 SRR = main ft_pipex pathutil
 SRC = $(addsuffix .c, $(SRR))
 OBJ = $(SRC:%.c=%.o)

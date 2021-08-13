@@ -16,22 +16,22 @@
 void ft_pipein(t_info *info, int pipefd[2])
 {
 	close(pipefd[PIPE_READ]);
-	if (dup2(info->infd, STDIN) == ERROR)
-		ft_error("while  connecting infile fd with STDIN");
 	if (dup2(pipefd[PIPE_WRITE], STDOUT) == ERROR)
 		ft_error("while connecting pipe write END with STDOUT");
+	if (dup2(info->infd, STDIN) == ERROR)
+		ft_error("while  connecting infile fd with STDIN");
 	ft_exec(info, 0);
 	ft_purge2str(info->argslst[0]);
 	close(info->infd);
-	close(pipefd[1]);
+	close(pipefd[PIPE_WRITE]);
 	wait(CHILD);
 }
 
 void ft_pipeout(t_info *info, int pipefd[2])
 {
 	close(pipefd[PIPE_WRITE]);
-	dup2(pipefd[PIPE_READ], 0);
 	dup2(info->outfd, STDOUT);
+	dup2(pipefd[PIPE_READ], STDIN);
 	ft_exec(info, 1);
 	ft_purge2str(info->argslst[1]);
 	close(info->outfd);

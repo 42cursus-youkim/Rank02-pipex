@@ -14,17 +14,17 @@
 # define PIPEX_H
 
 # define OK 0
-# define CHILD 0
 # define ERROR -1
 # define STDIN 0
 # define STDOUT 1
+
+# define CHILD 0
 # define PIPE_READ 0
 # define PIPE_WRITE 1
 
 # include <fcntl.h>
-# include <stdio.h>
+# include <stdio.h> // remove
 # include <sys/wait.h>
-# include <sys/types.h>
 # include "./libft/libft.h"
 
 typedef struct s_info
@@ -45,7 +45,7 @@ void ft_pipeout(t_info *info, int pipefd[2]);
 /*
 ** pathutils
 */
-char **ft_getpaths(t_info *info);
+char **ft_getpath(t_info *info);
 void ft_exec(t_info *info, int which);
 
 #endif
