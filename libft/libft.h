@@ -6,7 +6,7 @@
 /*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 22:12:11 by youkim            #+#    #+#             */
-/*   Updated: 2021/08/13 18:20:21 by youkim           ###   ########.fr       */
+/*   Updated: 2021/08/14 09:06:07 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,18 +58,24 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-int		ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(int fd, char *s);
-void	ft_putendl_fd(char *s, int fd);
-void	ft_putnbr_fd(int n, int fd);
+
+/*
+** put
+*/
+int		ft_putchar_fd(int fd, char c);
+int		ft_putstr_fd(int fd, char *s);
+int		ft_putnbr_fd(int fd, int n);
+void	ft_putendl_fd(int fd, char *s);
+int		ft_putchar(char c);
+int		ft_putstr(char *s);
 /*
 ** BONUS
 */
 t_list	*ft_lstnew(void *content);
-void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
-t_list	*ft_lstlast(t_list *lst);
+void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstadd_back(t_list **lst, t_list *new);
+t_list	*ft_lstlast(t_list *lst);
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
@@ -84,8 +90,7 @@ int		ft_abs(int n);
 int		ft_min(int a, int b);
 int		ft_max(int a, int b);
 
-int		ft_putchar(char c);
-int		ft_putstr(char *s);
+
 char	*ft_itoa_base(long long n, char *baseset);
 char	**ft_purge2str(char **str2d);
 void	ft_error(char *error);

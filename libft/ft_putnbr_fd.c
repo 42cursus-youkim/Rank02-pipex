@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youkim <youkim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 12:49:38 by youkim            #+#    #+#             */
-/*   Updated: 2021/07/03 11:49:18 by youkim           ###   ########.fr       */
+/*   Updated: 2021/08/13 18:32:23 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	st_writenbr(int n, int fd)
+static void	st_writenbr(int fd, int n)
 {
 	if (n >= 10)
 		st_writenbr(n / 10, fd);
 	write(fd, &"0123456789"[n % 10], 1);
 }
 
-void	ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int fd, int n)
 {
 	if (fd < 0)
 		return ;

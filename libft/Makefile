@@ -6,7 +6,7 @@
 #    By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/14 14:32:23 by youkim            #+#    #+#              #
-#    Updated: 2021/08/13 17:54:52 by youkim           ###   ########.fr        #
+#    Updated: 2021/08/13 18:24:47 by youkim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRCLST	=	memset bzero memcpy memccpy memmove memchr memcmp\
 			calloc strdup\
 			strlen strlcpy strlcat strchr strrchr strnstr strncmp atoi\
 			substr strjoin strtrim split itoa itoa_base strmapi\
-			putchar putstr_fd putendl_fd\
+			putliteral\
 			putnbr_fd math exit purge2str\
 			comp_alpha comp_ascii convert math
 SRCLSB	=	new add_front size last add_back delone clear iter map
