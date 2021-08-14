@@ -29,18 +29,18 @@ typedef struct s_info
 	int		outfd;
 	char	**argslst[2];
 	char	**envp;
-} t_info;
+}	t_info;
 
 /*
 ** ft_pipex
 */
-void ft_pipex(int argc, char **argv, char **envp);
-void ft_pipein(t_info *info, int pipefd[2]);
-void ft_pipeout(t_info *info, int pipefd[2]);
+void	ft_pipex(int argc, char **argv, char **envp);
+void	ft_pipein(t_info *info, int pipefd[2]);
+void	ft_pipeout(t_info *info, int pipefd[2]);
 /*
 ** pathutils
 */
-char **ft_getpath(t_info *info);
-void ft_exec(t_info *info, int which);
+char	**ft_getpath(t_info *info);
+void	ft_exec(t_info *info, int which);
 
 #endif

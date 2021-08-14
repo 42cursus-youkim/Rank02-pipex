@@ -6,7 +6,7 @@
 /*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 22:12:11 by youkim            #+#    #+#             */
-/*   Updated: 2021/08/14 11:17:23 by youkim           ###   ########.fr       */
+/*   Updated: 2021/08/14 14:11:48 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdbool.h>
 
 # define OK 0
 # define ERROR 1
@@ -104,5 +105,7 @@ long long	ft_lmax(long long a, long long b);
 char		*ft_itoa_base(long long n, char *baseset);
 char		**ft_purge2str(char **str2d);
 void		ft_error(char *error);
+char		**ft_qsplit(char const *s, char lim);
+bool		*ft_malloc(void **ptr, size_t size);
 
 #endif

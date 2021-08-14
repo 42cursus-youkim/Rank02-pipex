@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_qsplit.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youkim <youkim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/08 20:00:17 by youkim            #+#    #+#             */
-/*   Updated: 2021/07/03 11:50:34 by youkim           ###   ########.fr       */
+/*   Created: 2021/08/14 13:53:13 by youkim            #+#    #+#             */
+/*   Updated: 2021/08/14 14:15:56 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+char	**ft_qsplit(char const *s, char lim)
 {
-	void	*ptr;
-
-	ptr = malloc(size * count);
-	if (ptr)
-		ft_bzero(ptr, size * count);
-	return (ptr);
+	return (NULL);
 }

@@ -10,11 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "ft_pipex.h"
 #include <stdio.h>
 
-void ft_pipein(t_info *info, int pipefd[2])
+void	ft_pipein(t_info *info, int pipefd[2])
 {
 	int i = -1;
 	while (info->argslst[0][++i])
@@ -31,7 +30,7 @@ void ft_pipein(t_info *info, int pipefd[2])
 	wait(CHILD);
 }
 
-void ft_pipeout(t_info *info, int pipefd[2])
+void	ft_pipeout(t_info *info, int pipefd[2])
 {
 	close(pipefd[PIPE_WRITE]);
 	dup2(info->outfd, STDOUT);
@@ -42,10 +41,10 @@ void ft_pipeout(t_info *info, int pipefd[2])
 	close(pipefd[PIPE_READ]);
 }
 
-void ft_pipex(int argc, char **argv, char **envp)
+void	ft_pipex(int argc, char **argv, char **envp)
 {
-	int pipefd[2];
-	t_info info;
+	int		pipefd[2];
+	t_info	info;
 
 	for (int i = 0; i < argc; i++)
 		printf("%d:%s\n", i, argv[i]);

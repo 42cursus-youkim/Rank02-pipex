@@ -6,7 +6,7 @@
 /*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/08 16:15:55 by youkim            #+#    #+#             */
-/*   Updated: 2021/05/08 18:32:04 by youkim           ###   ########.fr       */
+/*   Updated: 2021/08/14 14:15:36 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,32 @@ void	*ft_memset(void *b, int c, size_t len)
 	while (i < len)
 		ptr[i++] = c;
 	return (b);
+}
+
+void	ft_bzero(void *s, size_t n)
+{
+	ft_memset(s, 0, n);
+}
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*ptr;
+
+	ptr = malloc(size * count);
+	if (ptr)
+		ft_bzero(ptr, size * count);
+	return (ptr);
+}
+
+/*
+** directly malloc via sending pointer;
+** &ptr -> *(*ptr)
+** size is equal to size * sizeof(type)
+*/
+bool	ft_malloc(void **ptr, size_t size)
+{
+	*ptr = malloc(size);
+	if (!*ptr)
+		return (false);
+	return (true);
 }
