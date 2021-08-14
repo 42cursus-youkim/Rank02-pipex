@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youkim <youkim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 19:47:16 by youkim            #+#    #+#             */
-/*   Updated: 2021/07/03 11:47:34 by youkim           ###   ########.fr       */
+/*   Updated: 2021/08/14 10:30:54 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,6 @@ static int	st_lenstr(size_t i, char const *s, char c)
 	return (len);
 }
 
-static char	**st_purge2str(char **str2d)
-{
-	size_t	i;
-
-	i = 0;
-	while (str2d[i])
-		free(str2d[i++]);
-	free(str2d);
-	return (0);
-}
-
 static char	**st_alloc2str(char **str2d, size_t numstrs, char const *s, char c)
 {
 	size_t	i;
@@ -71,7 +60,7 @@ static char	**st_alloc2str(char **str2d, size_t numstrs, char const *s, char c)
 			i++;
 		str2d[j] = malloc((st_lenstr(i, s, c) + 1) * sizeof(char));
 		if (!str2d[j])
-			return (st_purge2str(str2d));
+			return (ft_purge2str(str2d));
 		k = 0;
 		while (s[i] && s[i] != c)
 		{
@@ -88,14 +77,14 @@ static char	**st_alloc2str(char **str2d, size_t numstrs, char const *s, char c)
 
 char	**ft_split(char const *s, char c)
 {
-	char	**str2d;
+	char	**strarr;
 	size_t	numstrs;
 
 	if (!s)
 		return (0);
 	numstrs = st_strsnum(s, c);
-	str2d = malloc((numstrs + 1) * sizeof(char *));
-	if (!str2d)
+	strarr = malloc((numstrs + 1) * sizeof(char *));
+	if (!strarr)
 		return (0);
-	return (st_alloc2str(str2d, numstrs, s, c));
+	return (st_alloc2str(strarr, numstrs, s, c));
 }
