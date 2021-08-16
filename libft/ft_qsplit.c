@@ -6,47 +6,46 @@
 /*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/14 13:53:13 by youkim            #+#    #+#             */
-/*   Updated: 2021/08/16 20:53:51 by youkim           ###   ########.fr       */
+/*   Updated: 2021/08/16 21:49:58 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 #define LOG printf("%02d:%c %c%c%c (x%d)\n",\
-	(int)i, s[i], inq ? '"' : '.', inw ? 'w' : '.', fw ? 'f' : '.', (int)num);
+	(int)i, s[i],\
+	flag & INQ ? '"':'.',\
+	flag & INW ? 'w':'.',\
+	flag & FW  ? 'f':'.',\
+	(int)num);
+// #define LOG printf("%02d:%c %c%c%c (x%d)\n",\
+// 	(int)i, s[i], inq ? '"' : '.', inw ? 'w' : '.', fw ? 'f' : '.', (int)num);
 	// (int)i, s[i], inq ? '"' : '.', inw ? 'w' : '.', (int)num);
 
 static int	st_strsnum(char const *s, char c)
 {
 	int	i;
 	size_t	num;
-	bool	inq;
-	bool	inw;
-	bool	fw;
+	unsigned char flag;
 
 	i = -1;
 	num = 0;
-	inq = false;
-	inw = false;
-	fw = true;
+	flag = FW;
 	while (s[++i])
 	{
-		if (inw && fw)
+		if (flag & FW && flag & INW)
 		{
-			fw = false;
+			flag &= ~FW;
 			num++;
 		}
 		if (s[i] == '\'')
-			inq = !inq;
-		if (!inq && s[i] == c)
-			inw = false;
+			flag ^= INQ;
+		if (!(flag & INQ) && s[i] == c)
+			flag &= ~INW;
 		else
-		{
-			inw = true;
-		}
-		if (!inw)
-			fw = true;
-		LOG
+			flag |= INW;
+		if (!(flag & INW))
+			flag |= FW;
 	}
 	return (num);
 }

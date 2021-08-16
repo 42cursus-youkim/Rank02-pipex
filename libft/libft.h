@@ -6,7 +6,7 @@
 /*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 22:12:11 by youkim            #+#    #+#             */
-/*   Updated: 2021/08/14 17:05:00 by youkim           ###   ########.fr       */
+/*   Updated: 2021/08/16 21:34:00 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,22 @@
 # define STDIN 0
 # define STDOUT 1
 
+/*
+** qsplit binary operation
+*/
+#define	INQ	01
+#define INW	02
+#define FW	04
+
+/*
+** linked list struct
+*/
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }					t_list;
+
 
 void		*ft_memset(void *b, int c, size_t len);
 void		ft_bzero(void *s, size_t n);
