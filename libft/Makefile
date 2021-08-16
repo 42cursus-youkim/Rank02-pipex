@@ -6,24 +6,24 @@
 #    By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/14 14:32:23 by youkim            #+#    #+#              #
-#    Updated: 2021/08/14 14:06:55 by youkim           ###   ########.fr        #
+#    Updated: 2021/08/14 17:53:29 by youkim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = # -Wall -Wextra -Werror
 AR = ar rcs
 RM = rm -f
 
 SRCLST =	memset memcpy memccpy memmove memchr memcmp\
-			strdup\
-			strlen strlcpy strlcat strchr strrchr strnstr strncmp atoi\
-			substr strjoin strtrim split itoa_base strmapi\
+			strdup strlen strlcpy strlcat strchr strrchr strnstr strncmp\
+			substr strjoin strtrim split qsplit\
+			atoi itoa_base strmapi\
 			putliteral putnbr_fd math exit purge2str\
 			comp_alpha comp_ascii convert math math_ll\
-			qsplit
+
 SRCLSB =	add utils delone clear iter map
 
 SOURCES =	$(addprefix ./ft_,		$(addsuffix	.c,			$(SRCLST)))
@@ -53,4 +53,9 @@ re: fclean all
 
 solo: all clean
 
-.PHONY: make bonus all clean fclean re solo
+test: main.o $(OBJECTS)
+	$(CC) $(CFLAGS) -o $@ $^
+	clear
+	./$@
+
+.PHONY: make bonus all clean fclean re solo test

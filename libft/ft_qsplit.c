@@ -6,13 +6,15 @@
 /*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/14 13:53:13 by youkim            #+#    #+#             */
-/*   Updated: 2021/08/14 14:15:56 by youkim           ###   ########.fr       */
+/*   Updated: 2021/08/16 10:36:51 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-char	**ft_qsplit(char const *s, char lim)
+
+char	**ft_qsplit(char const *s, char c)
 {
 	return (NULL);
 }

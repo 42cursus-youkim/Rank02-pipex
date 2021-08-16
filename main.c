@@ -6,12 +6,12 @@
 /*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 18:53:58 by youkim            #+#    #+#             */
-/*   Updated: 2021/08/14 14:16:56 by youkim           ###   ########.fr       */
+/*   Updated: 2021/08/14 17:14:15 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_pipex.h"
-
+#include <stdio.h>
 int	main(int argc, char **argv, char **envp)
 {
 	ft_pipex(argc, argv, envp);

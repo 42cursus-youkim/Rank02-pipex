@@ -6,7 +6,7 @@
 /*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/08 16:15:55 by youkim            #+#    #+#             */
-/*   Updated: 2021/08/14 14:15:36 by youkim           ###   ########.fr       */
+/*   Updated: 2021/08/14 15:49:18 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,4 @@ void	*ft_calloc(size_t count, size_t size)
 	if (ptr)
 		ft_bzero(ptr, size * count);
 	return (ptr);
-}
-
-/*
-** directly malloc via sending pointer;
-** &ptr -> *(*ptr)
-** size is equal to size * sizeof(type)
-*/
-bool	ft_malloc(void **ptr, size_t size)
-{
-	*ptr = malloc(size);
-	if (!*ptr)
-		return (false);
-	return (true);
 }
