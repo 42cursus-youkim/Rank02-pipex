@@ -6,34 +6,46 @@
 /*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/14 13:53:13 by youkim            #+#    #+#             */
-/*   Updated: 2021/08/16 20:05:24 by youkim           ###   ########.fr       */
+/*   Updated: 2021/08/16 20:53:51 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
-#define LOG printf("%02d:%c %c%c (x%d)\n",\
-	(int)i, s[i], inq ? '"' : '.', inw ? 'w' : '.', (int)num);
+#define LOG printf("%02d:%c %c%c%c (x%d)\n",\
+	(int)i, s[i], inq ? '"' : '.', inw ? 'w' : '.', fw ? 'f' : '.', (int)num);
+	// (int)i, s[i], inq ? '"' : '.', inw ? 'w' : '.', (int)num);
 
 static int	st_strsnum(char const *s, char c)
 {
-	size_t	i;
+	int	i;
 	size_t	num;
 	bool	inq;
 	bool	inw;
+	bool	fw;
 
 	i = -1;
 	num = 0;
 	inq = false;
-	inw = true;
+	inw = false;
+	fw = true;
 	while (s[++i])
 	{
+		if (inw && fw)
+		{
+			fw = false;
+			num++;
+		}
 		if (s[i] == '\'')
 			inq = !inq;
 		if (!inq && s[i] == c)
 			inw = false;
 		else
+		{
 			inw = true;
+		}
+		if (!inw)
+			fw = true;
 		LOG
 	}
 	return (num);
