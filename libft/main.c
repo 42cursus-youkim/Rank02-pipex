@@ -3,7 +3,7 @@
 
 int	main(void)
 {
-	char *s = "hello 'hi darkness' my 'o l d' friend";
+	char *s = "hello hi'dark'ness my 'o l d' friend";
 	printf("->%s<-\n", s);
 	char **t = ft_qsplit(s, ' ');
 	int i = -1;

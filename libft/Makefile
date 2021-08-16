@@ -6,7 +6,7 @@
 #    By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/14 14:32:23 by youkim            #+#    #+#              #
-#    Updated: 2021/08/14 17:53:29 by youkim           ###   ########.fr        #
+#    Updated: 2021/08/16 14:44:56 by youkim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,9 @@ solo: all clean
 
 test: main.o $(OBJECTS)
 	$(CC) $(CFLAGS) -o $@ $^
-	clear
-	./$@
+    ifeq ($(TFLAG),clear)
+		clear
+    endif
+		./$@
 
 .PHONY: make bonus all clean fclean re solo test
