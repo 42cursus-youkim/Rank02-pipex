@@ -6,7 +6,7 @@
 /*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 22:12:11 by youkim            #+#    #+#             */
-/*   Updated: 2021/08/16 21:34:00 by youkim           ###   ########.fr       */
+/*   Updated: 2021/08/17 15:57:18 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,5 +117,6 @@ long long	ft_lmax(long long a, long long b);
 char		*ft_itoa_base(long long n, char *baseset);
 char		**ft_purge2str(char **str2d);
 void		ft_error(char *error);
+char		*ft_strtrd(const char *s, const char *r);
 
 #endif
