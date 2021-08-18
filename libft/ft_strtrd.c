@@ -6,7 +6,7 @@
 /*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/17 15:48:31 by youkim            #+#    #+#             */
-/*   Updated: 2021/08/17 16:11:37 by youkim           ###   ########.fr       */
+/*   Updated: 2021/08/17 19:11:35 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*ft_strtrd(const char *s, const char *r)
 {
 	int		i;
-	int		j;
+	size_t	j;
 	int		torm;
 	char	*result;
 

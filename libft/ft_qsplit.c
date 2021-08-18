@@ -6,7 +6,7 @@
 /*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/14 13:53:13 by youkim            #+#    #+#             */
-/*   Updated: 2021/08/17 17:57:04 by youkim           ###   ########.fr       */
+/*   Updated: 2021/08/17 20:15:18 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,18 @@ static int	st_iterate(char const *s, char c)
 
 	i = -1;
 	result = 0;
-	printf("i : l\n");
-	while (s[++i] && i < ft_strlen(s))
+	// printf("i : l\n");
+	while (s[++i] && (size_t)i < ft_strlen(s))
 	{
 		l = st_lenstr(i, s, c);
 		if (l > 0)
 		{
-			printf("%02d:%02d\n", i, l);
+			// printf("%02d:%02d\n", i, l);
 			i += l;
 			result ++;
 		}
 	}
-	printf("%d/%d\n", i, ft_strlen(s));
+	// printf("%d/%d\n", i, ft_strlen(s));
 	return (result);
 }
 
@@ -59,7 +59,6 @@ char	**ft_qsplit(char const *s, char c)
 	int		w;
 	int		l;
 	int		n;
-	char	*temp;
 	char	**result;
 
 	if (!s)
@@ -70,18 +69,23 @@ char	**ft_qsplit(char const *s, char c)
 		return (NULL);
 	w = 0;
 	i = -1;
-	while (s[++i])
+	while (s[++i] && (size_t)i < ft_strlen(s))
 	{
 		l = st_lenstr(i, s, c);
 		if (l > 0)
 		{
+			// printf("w:%d\n",w);
 			result[w] = malloc(l + 1);
-			// result[w][l] = ;
+			ft_strlcpy(result[w++], s + i, l + 1);
+			// result[w][l] = 0;
+			// printf("%d:%d -> %s\n", s + i, ft_strlcpy(result[w], s + i, l + 1), result[w]);
+			// printf("\n", i, l);
 			i += l;;
-			// printf("%02d\n", l);
 		}
 	}
 	result[n] = 0;
+	// printf("%d\n", ft_strlen(result));
+	return (result);
 	// printf("n:%d\n", st_lenstr(0, s, c));
 }
 

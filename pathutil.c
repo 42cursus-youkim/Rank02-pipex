@@ -6,32 +6,32 @@
 /*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:17:57 by youkim            #+#    #+#             */
-/*   Updated: 2021/08/12 18:08:39 by youkim           ###   ########.fr       */
+/*   Updated: 2021/08/18 13:02:48 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_pipex.h"
 
-char **ft_getpath(t_info *info)
+char	**ft_getpath(t_info *info)
 {
 	int		i;
 
 	i = -1;
-	while(info->envp[++i])
-	{
+	while (info->envp[++i])
 		if (ft_strncmp(info->envp[i], "PATH", 4) == 0)
-			return(ft_split(info->envp[i] + 5, ':'));
-	}
+			return (ft_split(info->envp[i] + 5, ':'));
 	return (NULL);
 }
 
-void ft_exec(t_info *info, int which)
+void	ft_exec(t_info *info, int which)
 {
-	int i;
-	char *temp;
-	char *path;
-	char **paths;
+	int		i;
+	char	*temp;
+	char	*path;
+	char	**paths;
 
+	for (int j; info->argslst[which][j]; j++)
+		printf("==>%s\n", info->argslst[which][j]);
 	if (info->argslst[which][0][0] == '/')
 	{
 		path = info->argslst[which][0];
@@ -41,7 +41,7 @@ void ft_exec(t_info *info, int which)
 	}
 	i = -1;
 	paths = ft_getpath(info);
-	while(paths[++i])
+	while (paths[++i])
 	{
 		temp = ft_strjoin(paths[i], "/");
 		path = ft_strjoin(temp, info->argslst[which][0]);

@@ -6,7 +6,7 @@
 /*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 22:12:11 by youkim            #+#    #+#             */
-/*   Updated: 2021/08/17 15:57:18 by youkim           ###   ########.fr       */
+/*   Updated: 2021/08/17 19:09:52 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdbool.h>
 
 # define OK 0
-# define ERROR 1
+# define ERROR -1
 # define STDIN 0
 # define STDOUT 1
 
@@ -72,7 +72,7 @@ char		*ft_substr(char const *s, unsigned int start, size_t len);
 char		*ft_strjoin(char const *s1, char const *s2);
 char		*ft_strtrim(char const *s1, char const *set);
 char		**ft_split(char const *s, char c);
-char		**ft_qsplit(char const *s, char lim);
+char		**ft_qsplit(char const *s, char c);
 char		*ft_itoa(int n);
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
