@@ -6,7 +6,7 @@
 /*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/14 13:53:13 by youkim            #+#    #+#             */
-/*   Updated: 2021/08/18 20:54:24 by youkim           ###   ########.fr       */
+/*   Updated: 2021/08/19 08:33:44 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,15 @@ static int	st_lenstr(size_t i, char const *s, char c)
 {
 	int		l;
 	bool	inq;
+	char	whichq;
 
 	l = -1;
 	inq = false;
 	while (s[i + (++l)])
 	{
-		if (s[i + l] == '\'')
+		if (!inq && ft_strchr("'\"", s[i + l]))
+			whichq = s[i + l];
+		if (s[i + l] == whichq)
 			inq = !inq;
 		if (!inq && s[i + l] == c)
 			break ;
@@ -56,7 +59,7 @@ static void	st_removq(char **s)
 
 	i = -1;
 	while ((*s)[++i])
-		if ((*s)[i] == '\'')
+		if (ft_strchr("'\"", (*s)[i]))
 			(*s)[i] = ' ';
 }
 

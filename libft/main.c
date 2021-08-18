@@ -5,7 +5,7 @@ int	main(void)
 {
 	char *h = "he'l'''''l'o w'or'ld'";
 	printf("-<%s>-\n-<%s>-\n", h, ft_strtrd(h, "hl '"));
-	char *s = "   he ello'dark'ne  ss my 'o l d' friend ";
+	char *s = "   \"he 'e' l\" lo'dark'ne  ss my 'o l d' friend ";
 	for (int i = 0; i < ft_strlen(s); i++)
 		printf("%c", "1234567890"[i % 10]);
 	printf("\n%s\n", s);
