@@ -57,8 +57,8 @@ void	ft_pipex(int argc, char **argv, char **envp)
 	info.pid = fork();
 	if (info.pid == ERROR)
 		ft_error("while forking process");
-	info.argslst[0] = ft_split(argv[2], ' ');
-	info.argslst[1] = ft_split(argv[3], ' ');
+	info.argslst[0] = ft_qsplit(argv[2], ' ');
+	info.argslst[1] = ft_qsplit(argv[3], ' ');
 	if (info.pid == CHILD)
 		ft_pipeout(&info, pipefd);
 	else

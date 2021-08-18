@@ -6,7 +6,7 @@
 /*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/14 13:53:13 by youkim            #+#    #+#             */
-/*   Updated: 2021/08/18 20:24:56 by youkim           ###   ########.fr       */
+/*   Updated: 2021/08/18 20:54:24 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,46 @@ static int	st_iterate(char const *s, char c)
 	return (result);
 }
 
+static void	st_removq(char **s)
+{
+	int	i;
+
+	i = -1;
+	while ((*s)[++i])
+		if ((*s)[i] == '\'')
+			(*s)[i] = ' ';
+}
+
+char	**st_writearr(char const *s, char c, int n, char **result)
+{
+	int	i;
+	int	l;
+	int	w;
+
+	w = 0;
+	i = -1;
+	while (s[++i] && (size_t)i < ft_strlen(s))
+	{
+		l = st_lenstr(i, s, c);
+		if (l > 0)
+		{
+			result[w] = malloc(l + 1);
+			if (!result[w])
+				return (ft_purge2str(result));
+			ft_strlcpy(result[w], s + i, l + 1);
+			st_removq(&result[w++]);
+			i += l;
+		}
+	}
+	result[n] = 0;
+	return (result);
+}
+
 char	**ft_qsplit(char const *s, char c)
 {
 	int		i;
-	int		w;
-	int		l;
+	// int		w;
+	// int		l;
 	int		n;
 	char	**result;
 
@@ -64,19 +99,8 @@ char	**ft_qsplit(char const *s, char c)
 	result = malloc((n + 1) * sizeof(char *));
 	if (!result)
 		return (NULL);
-	w = 0;
-	i = -1;
-	while (s[++i] && (size_t)i < ft_strlen(s))
-	{
-		l = st_lenstr(i, s, c);
-		if (l > 0)
-		{
-			result[w] = malloc(l + 1);
-			ft_strlcpy(result[w++], s + i, l + 1);
-			i += l;
-		}
-	}
-	result[n] = 0;
-	return (result);
+	// w = 0;
+	// i = -1;
+	return (st_writearr(s, c, n, result));
 }
 
