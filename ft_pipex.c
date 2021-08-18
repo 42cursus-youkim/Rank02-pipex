@@ -15,9 +15,6 @@
 
 void	ft_pipein(t_info *info, int pipefd[2])
 {
-	int i = -1;
-	while (info->argslst[0][++i])
-		printf("%s\n", info->argslst[0][i]);
 	close(pipefd[PIPE_READ]);
 	if (dup2(pipefd[PIPE_WRITE], STDOUT) == ERROR)
 		ft_error("while connecting pipe write END with STDOUT");
@@ -46,8 +43,6 @@ void	ft_pipex(int argc, char **argv, char **envp)
 	int		pipefd[2];
 	t_info	info;
 
-	for (int i = 0; i < argc; i++)
-		printf("%d:%s\n", i, argv[i]);
 	if (argc != 5)
 		ft_error("to use: ./pipex inflie cmd1 cmd2 outfile");
 	info.envp = envp;

@@ -1,4 +1,5 @@
 test
+test.*
 main
 *file
 *.o
@@ -6,3 +7,4 @@ libft.a
 pipex
 pipex_medic/
 pipex-tester/
+.gdb*

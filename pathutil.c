@@ -6,7 +6,7 @@
 /*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:17:57 by youkim            #+#    #+#             */
-/*   Updated: 2021/08/18 13:02:48 by youkim           ###   ########.fr       */
+/*   Updated: 2021/08/18 19:24:31 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ void	ft_exec(t_info *info, int which)
 	char	*path;
 	char	**paths;
 
-	for (int j; info->argslst[which][j]; j++)
-		printf("==>%s\n", info->argslst[which][j]);
 	if (info->argslst[which][0][0] == '/')
 	{
 		path = info->argslst[which][0];
