@@ -49,7 +49,7 @@ void	ft_pipex(int argc, char **argv, char **envp)
 	info.infd = open(argv[1], O_RDONLY);
 	if (info.infd == ERROR)
 		ft_error("while opening input file");
-	info.outfd = open(argv[4], O_WRONLY);
+	info.outfd = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0666);
 	if (info.outfd == ERROR)
 		ft_error("while opening output file");
 	if (pipe(pipefd) == ERROR)
