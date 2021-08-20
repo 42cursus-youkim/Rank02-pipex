@@ -60,7 +60,7 @@ test: all
 	./$(NAME) $(TEST_ARG)
 
 leak: all
-	valgrind $(VFLAGS) ./$(NAME) $(TEST_ARG)
+	colour-valgrind $(VFLAGS) ./$(NAME) $(TEST_ARG)
 
 debug:
 	$(call make_libft)
