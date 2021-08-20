@@ -13,7 +13,7 @@
 NAME = pipex
 
 LIBFT = libft
-LIBFT_PATH = ./$(LIBFT)/$(LIBFT).a
+LIBFT_PATH = ./$(LIBFT).a
 
 CC = gcc
 CFLAGS = #-Wall -Wextra -Werror
@@ -29,10 +29,11 @@ OBJ = $(SRC:%.c=%.o)
 
 define make_libft
 	make all -C $(LIBFT)/
-	cp $(LIBFT)/$(LIBFT).a $(NAME)
+	cp $(LIBFT)/$(LIBFT).a ./
 endef
 
-TEST_ARG = infile 'ls -l' 'wc -l' outfile
+TEST_ARG = /dev/urandom "cat "
+# TEST_ARG = infile 'ls -l' 'wc -l' outfile
 # TEST_ARG = infile "awk '{count++} END {print count}'" 'wc -l' outfile
 
 %.o: %.c

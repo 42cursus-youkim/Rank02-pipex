@@ -16,10 +16,10 @@
 void	ft_pipein(t_info *info, int pipefd[2])
 {
 	close(pipefd[PIPE_READ]);
-	if (dup2(pipefd[PIPE_WRITE], STDOUT) == ERROR)
-		ft_error("while connecting pipe write END with STDOUT");
-	if (dup2(info->infd, STDIN) == ERROR)
-		ft_error("while  connecting infile fd with STDIN");
+	if (dup2(pipefd[PIPE_WRITE], STDOUT_FILENO) == ERROR)
+		ft_error("while connecting pipe write END with STDOUT_FILENO");
+	if (dup2(info->infd, STDIN_FILENO) == ERROR)
+		ft_error("while  connecting infile fd with STDIN_FILENO");
 	ft_exec(info, 0);
 	close(info->infd);
 	close(pipefd[PIPE_WRITE]);
@@ -29,8 +29,8 @@ void	ft_pipein(t_info *info, int pipefd[2])
 void	ft_pipeout(t_info *info, int pipefd[2])
 {
 	close(pipefd[PIPE_WRITE]);
-	dup2(info->outfd, STDOUT);
-	dup2(pipefd[PIPE_READ], STDIN);
+	dup2(info->outfd, STDOUT_FILENO);
+	dup2(pipefd[PIPE_READ], STDIN_FILENO);
 	ft_exec(info, 1);
 	close(info->outfd);
 	close(pipefd[PIPE_READ]);
