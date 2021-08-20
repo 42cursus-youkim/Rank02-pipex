@@ -6,7 +6,7 @@
 /*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/14 13:53:13 by youkim            #+#    #+#             */
-/*   Updated: 2021/08/19 08:33:44 by youkim           ###   ########.fr       */
+/*   Updated: 2021/08/20 16:09:32 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static int	st_lenstr(size_t i, char const *s, char c)
 
 	l = -1;
 	inq = false;
+	whichq = '\'';
 	while (s[i + (++l)])
 	{
 		if (!inq && ft_strchr("'\"", s[i + l]))
@@ -91,8 +92,6 @@ char	**st_writearr(char const *s, char c, int n, char **result)
 char	**ft_qsplit(char const *s, char c)
 {
 	int		i;
-	// int		w;
-	// int		l;
 	int		n;
 	char	**result;
 
@@ -102,8 +101,5 @@ char	**ft_qsplit(char const *s, char c)
 	result = malloc((n + 1) * sizeof(char *));
 	if (!result)
 		return (NULL);
-	// w = 0;
-	// i = -1;
 	return (st_writearr(s, c, n, result));
 }
-
