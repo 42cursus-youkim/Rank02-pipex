@@ -6,7 +6,7 @@
 /*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:17:57 by youkim            #+#    #+#             */
-/*   Updated: 2021/08/18 19:24:31 by youkim           ###   ########.fr       */
+/*   Updated: 2021/08/20 16:07:07 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,13 @@ char	**ft_getpath(t_info *info)
 	return (NULL);
 }
 
-void	ft_exec(t_info *info, int which)
+static void	ft_exec_path(t_info *info, int which)
 {
 	int		i;
 	char	*temp;
 	char	*path;
 	char	**paths;
 
-	if (info->argslst[which][0][0] == '/')
-	{
-		path = info->argslst[which][0];
-		if (execve(path, info->argslst[which], info->envp) == ERROR)
-			ft_error("invalid path to command");
-		return ;
-	}
 	i = -1;
 	paths = ft_getpath(info);
 	while (paths[++i])
@@ -48,5 +41,19 @@ void	ft_exec(t_info *info, int which)
 		free(temp);
 	}
 	ft_purge2str(paths);
+	ft_purge2str(info->argslst[0]);
+	ft_purge2str(info->argslst[1]);
 	ft_error("could not find any matching path for command");
+}
+
+void	ft_exec(t_info *info, int which)
+{
+	char	*path;
+
+	if (info->argslst[which][0][0] != '/')
+		ft_exec_path(info, which);
+	path = info->argslst[which][0];
+	if (execve(path, info->argslst[which], info->envp) == ERROR)
+		ft_error("invalid path to command");
+	return ;
 }

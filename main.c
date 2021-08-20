@@ -6,7 +6,7 @@
 /*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 18:53:58 by youkim            #+#    #+#             */
-/*   Updated: 2021/08/18 20:01:04 by youkim           ###   ########.fr       */
+/*   Updated: 2021/08/20 15:27:11 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <stdio.h>
 int	main(int argc, char **argv, char **envp)
 {
-	printf("%d", argc);
 	ft_pipex(argc, argv, envp);
 	return (0);
 }
