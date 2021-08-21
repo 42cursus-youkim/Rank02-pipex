@@ -6,7 +6,7 @@
 #    By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/08 22:15:49 by youkim            #+#    #+#              #
-#    Updated: 2021/08/08 22:15:49 by youkim           ###   ########.fr        #
+#    Updated: 2021/08/21 15:07:48 by youkim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,7 @@ all: $(NAME)
 
 clean:
 	make clean -C $(LIBFT)
+	$(RM) $(LIBFT_PATH)
 	$(RM) $(OBJ)
 
 fclean: clean
