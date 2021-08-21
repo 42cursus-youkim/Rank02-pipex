@@ -32,7 +32,7 @@ define make_libft
 	cp $(LIBFT)/$(LIBFT).a ./
 endef
 
-TEST_ARG = /dev/urandom "cat "
+TEST_ARG = /dev/urandom "cat" "head -1" outfile
 # TEST_ARG = infile 'ls -l' 'wc -l' outfile
 # TEST_ARG = infile "awk '{count++} END {print count}'" 'wc -l' outfile
 

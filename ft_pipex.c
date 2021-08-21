@@ -23,7 +23,6 @@ void	ft_pipein(t_info *info, int pipefd[2])
 	ft_exec(info, 0);
 	close(info->infd);
 	close(pipefd[PIPE_WRITE]);
-	wait(CHILD);
 }
 
 void	ft_pipeout(t_info *info, int pipefd[2])
@@ -34,6 +33,7 @@ void	ft_pipeout(t_info *info, int pipefd[2])
 	ft_exec(info, 1);
 	close(info->outfd);
 	close(pipefd[PIPE_READ]);
+	wait(CHILD);
 }
 
 void	ft_pipex(int argc, char **argv, char **envp)
@@ -58,7 +58,7 @@ void	ft_pipex(int argc, char **argv, char **envp)
 	info.argslst[0] = ft_qsplit(argv[2], ' ');
 	info.argslst[1] = ft_qsplit(argv[3], ' ');
 	if (info.pid == CHILD)
-		ft_pipeout(&info, pipefd);
-	else
 		ft_pipein(&info, pipefd);
+	else
+		ft_pipeout(&info, pipefd);
 }
