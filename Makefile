@@ -72,4 +72,4 @@ releak: re leak
 
 retest: re test
 
-.PHONY: all clean fclean re test debug
+.PHONY: all clean fclean re test leak releak retest debug
