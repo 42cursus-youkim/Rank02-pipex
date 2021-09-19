@@ -6,12 +6,11 @@
 /*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/14 13:53:13 by youkim            #+#    #+#             */
-/*   Updated: 2021/08/20 16:09:32 by youkim           ###   ########.fr       */
+/*   Updated: 2021/09/19 14:34:18 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static int	st_lenstr(size_t i, char const *s, char c)
 {

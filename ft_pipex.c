@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "ft_pipex.h"
-#include <stdio.h>
 
 void	ft_pipein(t_info *info, int pipefd[2])
 {

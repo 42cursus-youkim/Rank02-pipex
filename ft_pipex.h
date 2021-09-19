@@ -18,7 +18,6 @@
 # define PIPE_WRITE 1
 
 # include <fcntl.h>
-# include <stdio.h> // remove
 # include <sys/wait.h>
 # include "./libft/libft.h"
 
