@@ -43,14 +43,10 @@ void	ft_pipex(int argc, char **argv, char **envp)
 	if (argc != 5)
 		ft_error("to use: ./pipex inflie cmd1 cmd2 outfile");
 	info.envp = envp;
-	info.infd = open(argv[1], O_RDONLY);
-	if (info.infd == ERROR)
-		ft_error("while opening input file");
-	info.outfd = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0666);
-	if (info.outfd == ERROR)
-		ft_error("while opening output file");
-	if (pipe(pipefd) == ERROR)
-		ft_error("while creating pipe");
+	info.infd = ft_chkasn(open(argv[1], O_RDONLY), "while opening input file");
+	info.outfd = ft_chkasn(open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0666), \
+		"while opening output file");
+	ft_chkasn(pipe(pipefd), "while creating pipe");
 	info.pid = fork();
 	if (info.pid == ERROR)
 		ft_error("while forking process");

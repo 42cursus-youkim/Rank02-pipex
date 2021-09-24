@@ -23,7 +23,7 @@ DEBUG = gdb
 DFLAGS = -g -ggdb
 VFLAGS = --leak-check=full
 
-SRR = main ft_pipex pathutil
+SRR = main ft_pipex genutil pathutil
 SRC = $(addsuffix .c, $(SRR))
 OBJ = $(SRC:%.c=%.o)
 

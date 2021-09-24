@@ -6,7 +6,7 @@
 #    By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/14 14:32:23 by youkim            #+#    #+#              #
-#    Updated: 2021/08/17 15:57:33 by youkim           ###   ########.fr        #
+#    Updated: 2021/09/24 18:29:26 by youkim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,12 +17,13 @@ CFLAGS = # -Wall -Wextra -Werror
 AR = ar rcs
 RM = rm -f
 
-SRCLST =	memset memcpy memccpy memmove memchr memcmp\
-			strdup strlen strlcpy strlcat strchr strrchr strnstr strncmp\
-			substr strjoin strtrim split strtrd qsplit\
-			atoi itoa_base strmapi\
-			putliteral putnbr_fd math exit purge2str\
-			comp_alpha comp_ascii convert math math_ll\
+SRCLST =	strlen strlcpy strlcat strchr strncmp\
+			strdup strjoin split qsplit\
+			math exit purge2str putliteral comp_ascii\
+			# memset memcpy memccpy memcmp memmove memchr\
+			# substr strtrim strrchr strnstr strtrd\
+			# putnbr_fd atoi itoa_base strmapi\
+			# comp_alpha  convert math math_ll\
 
 
 SRCLSB =	add utils delone clear iter map
