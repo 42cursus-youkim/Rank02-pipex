@@ -6,7 +6,7 @@
 /*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/14 13:53:13 by youkim            #+#    #+#             */
-/*   Updated: 2021/09/19 14:34:18 by youkim           ###   ########.fr       */
+/*   Updated: 2021/09/26 11:47:14 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ char	**st_writearr(char const *s, char c, int n, char **result)
 
 char	**ft_qsplit(char const *s, char c)
 {
-	int		i;
 	int		n;
 	char	**result;
 

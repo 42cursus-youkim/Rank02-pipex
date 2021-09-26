@@ -6,14 +6,14 @@
 #    By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/14 14:32:23 by youkim            #+#    #+#              #
-#    Updated: 2021/09/24 18:29:26 by youkim           ###   ########.fr        #
+#    Updated: 2021/09/26 11:47:19 by youkim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
 CC = gcc
-CFLAGS = # -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
 RM = rm -f
 
