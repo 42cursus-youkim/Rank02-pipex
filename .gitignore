@@ -9,3 +9,4 @@ pipex_medic/
 pipex-tester/
 .gdb*
 .vscode
+*.py
