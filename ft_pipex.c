@@ -12,48 +12,58 @@
 
 #include "ft_pipex.h"
 
-void	ft_pipein(t_info *info, int pipefd[2])
+static int	openf(char *name, t_enum mode)
 {
-	close(pipefd[PIPE_READ]);
-	if (dup2(pipefd[PIPE_WRITE], STDOUT_FILENO) == ERROR)
-		ft_error("while connecting pipe write END with STDOUT_FILENO");
-	if (dup2(info->infd, STDIN_FILENO) == ERROR)
-		ft_error("while  connecting infile fd with STDIN_FILENO");
-	ft_exec(info, 0);
-	close(info->infd);
-	close(pipefd[PIPE_WRITE]);
+	int	fd;
+
+	if (mode == INPUT)
+	{
+		ft_chkasn(access(name, F_OK), "input file does not exsist");
+		fd = open(name, O_RDONLY);
+	}
+	else
+		fd = open(name, O_WRONLY | O_CREAT | O_TRUNC, 0666);
+	return (ft_chkasn(fd, "while opening file"));
 }
 
-void	ft_pipeout(t_info *info, int pipefd[2])
+static void	redirect(char *cmd, char **envp)
 {
-	close(pipefd[PIPE_WRITE]);
-	dup2(info->outfd, STDOUT_FILENO);
-	dup2(pipefd[PIPE_READ], STDIN_FILENO);
-	ft_exec(info, 1);
-	close(info->outfd);
-	close(pipefd[PIPE_READ]);
-	wait(CHILD);
+	pid_t	pid;
+	int		pipefd[2];
+
+	ft_chkasn(pipe(pipefd), "while creating pipe");
+	pid = fork();
+	if (pid == CHILD)
+	{
+		close(pipefd[PWRITE]);
+		dup2(pipefd[PREAD], STDIN_FILENO);
+	}
+	else if (pid > CHILD)
+	{
+		close(pipefd[PREAD]);
+		dup2(pipefd[PWRITE], STDOUT_FILENO);
+		ft_exec(cmd, envp);
+		wait(CHILD);
+		// waitpid(0, NULL, 0);
+	}
+	else
+		ft_error("while forking process");
 }
 
 void	ft_pipex(int argc, char **argv, char **envp)
 {
-	int		pipefd[2];
+	int		i;
 	t_info	info;
 
-	if (argc != 5)
-		ft_error("to use: ./pipex inflie cmd1 cmd2 outfile");
-	info.envp = envp;
-	info.infd = ft_chkasn(open(argv[1], O_RDONLY), "while opening input file");
-	info.outfd = ft_chkasn(open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0666), \
-		"while opening output file");
-	ft_chkasn(pipe(pipefd), "while creating pipe");
-	info.pid = fork();
-	if (info.pid == ERROR)
-		ft_error("while forking process");
-	info.argslst[0] = ft_qsplit(argv[2], ' ');
-	info.argslst[1] = ft_qsplit(argv[3], ' ');
-	if (info.pid == CHILD)
-		ft_pipein(&info, pipefd);
-	else
-		ft_pipeout(&info, pipefd);
+	i = 2;
+	if (argc < 5)
+		ft_error("to use: ./pipex [here_doc] infile cmd1 cmd2 ... outfile");
+	dup2(openf(argv[1], INPUT), STDIN_FILENO);
+	dup2(openf(argv[argc - 1], OUTPUT), STDOUT_FILENO);
+	while (i < argc - 2)
+	{
+		fprintf(stderr, "%i:%s\n", i, argv[i]);
+		redirect(argv[i++], envp);
+	}
+	ft_exec(argv[i], envp);
 }
