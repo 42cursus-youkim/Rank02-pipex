@@ -12,7 +12,7 @@
 
 #include "ft_pipex.h"
 
-static int	openf(char *name, t_enum mode)
+int	openf(char *name, t_enum mode)
 {
 	int	fd;
 
@@ -26,7 +26,7 @@ static int	openf(char *name, t_enum mode)
 	return (ft_chkasn(fd, "while opening file"));
 }
 
-static void	redirect(char *cmd, char **envp)
+void	redirect(char *cmd, char **envp)
 {
 	pid_t	pid;
 	int		pipefd[2];
@@ -49,18 +49,23 @@ static void	redirect(char *cmd, char **envp)
 		ft_error("while forking process");
 }
 
+void	ft_pipex_hd(int argc, char **argv, char **envp)
+{
+	return ;
+	// char	*here_doc;
+
+	// while()
+}
+
 void	ft_pipex(int argc, char **argv, char **envp)
 {
 	int		i;
-	t_info	info;
+	// t_info	info;
 
 	i = 2;
-	info.infd = openf(argv[1], INPUT);
-	info.outfd = openf(argv[argc - 1], OUTPUT);
-	dup2(info.infd, STDIN_FILENO);
-	dup2(info.outfd, STDOUT_FILENO);
+	dup2(openf(argv[1], INPUT), STDIN_FILENO);
+	dup2(openf(argv[argc - 1], OUTPUT), STDOUT_FILENO);
 	redirect(argv[i++], envp);
-	close(info.infd);
 	while (i < argc - 2)
 		redirect(argv[i++], envp);
 	ft_exec(argv[i], envp);

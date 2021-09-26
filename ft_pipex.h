@@ -39,8 +39,9 @@ typedef struct s_info
 ** ft_pipex
 */
 void	ft_pipex(int argc, char **argv, char **envp);
-// void	ft_pipein(t_info *info, int pipefd[2]);
-// void	ft_pipeout(t_info *info, int pipefd[2]);
+void	ft_pipex_hd(int argc, char **argv, char **envp);
+int		openf(char *name, t_enum mode);
+void	redirect(char *cmd, char **envp);
 /*
 ** pathutils
 */

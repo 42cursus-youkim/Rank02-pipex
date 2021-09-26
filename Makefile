@@ -16,7 +16,7 @@ LIBFT = libft
 LIBFT_PATH = ./$(LIBFT).a
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = #-Wall -Wextra -Werror
 RM = rm -rf
 
 DEBUG = gdb
