@@ -6,7 +6,7 @@
 /*   By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:17:57 by youkim            #+#    #+#             */
-/*   Updated: 2021/09/26 11:52:48 by youkim           ###   ########.fr       */
+/*   Updated: 2021/09/26 19:08:43 by youkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ char	**ft_getpath(char **envp)
 	while (envp[++i])
 		if (ft_strncmp(envp[i], "PATH", 4) == 0)
 			return (ft_split(envp[i] + 5, ':'));
+	ft_error("PATH not found in envp");
 	return (NULL);
 }
 
@@ -40,6 +41,7 @@ static void	ft_exec_path(char **cmds, char **envp)
 		free(path);
 		free(temp);
 	}
+	ft_purge2str(cmds);
 	ft_purge2str(paths);
 	ft_error("could not find any matching path for command");
 }
@@ -53,4 +55,5 @@ void	ft_exec(char *cmd, char **envp)
 		ft_exec_path(cmds, envp);
 	if (execve(cmds[0], cmds, envp) == ERROR)
 		ft_error("invalid path to command");
+	free(cmds);
 }

@@ -35,17 +35,15 @@ static void	redirect(char *cmd, char **envp)
 	pid = fork();
 	if (pid == CHILD)
 	{
-		fprintf(stderr, "hi, i'm child\n");
 		close(pipefd[PREAD]);
 		dup2(pipefd[PWRITE], STDOUT_FILENO);
 		ft_exec(cmd, envp);
 	}
 	else if (pid > CHILD)
 	{
-		fprintf(stderr, "hi, i'm parent; my pid: %d\n", pid);
 		close(pipefd[PWRITE]);
 		dup2(pipefd[PREAD], STDIN_FILENO);
-		wait(CHILD);
+		waitpid(pid, NULL, WNOHANG);
 	}
 	else
 		ft_error("while forking process");
@@ -57,11 +55,14 @@ void	ft_pipex(int argc, char **argv, char **envp)
 	t_info	info;
 
 	i = 2;
-	if (argc < 5)
-		ft_error("to use: ./pipex [here_doc] infile cmd1 cmd2 ... outfile");
-	dup2(openf(argv[1], INPUT), STDIN_FILENO);
-	dup2(openf(argv[argc - 1], OUTPUT), STDOUT_FILENO);
+	info.infd = openf(argv[1], INPUT);
+	info.outfd = openf(argv[argc - 1], OUTPUT);
+	dup2(info.infd, STDIN_FILENO);
+	dup2(info.outfd, STDOUT_FILENO);
+	redirect(argv[i++], envp);
+	close(info.infd);
 	while (i < argc - 2)
 		redirect(argv[i++], envp);
 	ft_exec(argv[i], envp);
+	wait(CHILD);
 }

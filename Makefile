@@ -16,36 +16,47 @@ LIBFT = libft
 LIBFT_PATH = ./$(LIBFT).a
 
 CC = gcc
-CFLAGS = #-Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 
 DEBUG = gdb
 DFLAGS = -g -ggdb
-VFLAGS = --leak-check=full
+VFLAGS =	--leak-check=full\
+			--show-leak-kinds=all\
+			--undef-value-errors=no\
+			--error-exitcode=240\
+			--errors-for-leak-kinds=all
 
-SRR = main ft_pipex genutil pathutil
+SRR = ft_pipex pathutil
 SRC = $(addsuffix .c, $(SRR))
 OBJ = $(SRC:%.c=%.o)
+
+POM = main.o
+POB = main_bonus.o
 
 define make_libft
 	make all -C $(LIBFT)/
 	cp $(LIBFT)/$(LIBFT).a ./
 endef
 
-TEST_ARG = /dev/urandom "cat" "head -1" outfile
-# TEST_ARG = infile 'ls -l' 'wc -l' outfile
+# TEST_ARG = /dev/urandom "cat" "head -1" outfile
+TEST_ARG = infile 'ls -l' 'wc -l' outfile
 # TEST_ARG = infile "awk '{count++} END {print count}'" 'wc -l' outfile
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-$(NAME): $(OBJ)
+$(NAME): $(POM) $(OBJ)
 	$(call make_libft)
 	$(CC) $(CFLAGS) -o $@ $^ $(LIBFT_PATH)
 # 	$@ -> curr. target. name
 # 	$^ -> curr. dependancy. list
 
 all: $(NAME)
+
+bonus: $(POB) $(OBJ)
+	$(call make_libft)
+	$(CC) $(CFLAGS) -o $(NAME) $^ $(LIBFT_PATH)
 
 clean:
 	make clean -C $(LIBFT)
@@ -62,6 +73,7 @@ test: all
 
 leak: all
 	colour-valgrind $(VFLAGS) ./$(NAME) $(TEST_ARG)
+
 
 debug:
 	$(call make_libft)
