@@ -15,12 +15,14 @@
 void	ft_pipex_hd(int argc, char **argv, char **envp)
 {
 	int		i;
+	int		temp;
 	char	*limiter;
 
-	limiter = argv[1];
+	limiter = argv[2];
 	printf("limiter: %s\n", limiter);
+	temp = ft_chkasn(openf("/tmp/.heredoc", TEMP), "while creating temp file");
+	fprintf(stderr, "temp: %d\n", temp);
 	return ;
-
 	// while()
 }
 

@@ -24,6 +24,7 @@ typedef enum e_enum
 	PWRITE = 1,
 	INPUT = 0,
 	OUTPUT = 1,
+	TEMP = 1,
 }	t_enum;
 
 typedef struct s_info
