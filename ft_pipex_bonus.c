@@ -12,43 +12,19 @@
 
 #include "ft_pipex.h"
 
-int	openf(char *name, t_enum mode)
+void	ft_pipex_hd(int argc, char **argv, char **envp)
 {
-	int	fd;
+	int		i;
+	char	*limiter;
 
-	if (mode == INPUT)
-	{
-		ft_chkasn(access(name, F_OK), "input file does not exsist");
-		fd = open(name, O_RDONLY);
-	}
-	else
-		fd = open(name, O_WRONLY | O_CREAT | O_TRUNC, 0666);
-	return (ft_chkasn(fd, "while opening file"));
+	limiter = argv[1];
+	printf("limiter: %s\n", limiter);
+	return ;
+
+	// while()
 }
 
-void	redirect(char *cmd, char **envp)
-{
-	pid_t	pid;
-	int		pipefd[2];
-
-	ft_chkasn(pipe(pipefd), "while creating pipe");
-	pid = fork();
-	if (pid == CHILD)
-	{
-		close(pipefd[PREAD]);
-		dup2(pipefd[PWRITE], STDOUT_FILENO);
-		ft_exec(cmd, envp);
-	}
-	else if (pid > CHILD)
-	{
-		close(pipefd[PWRITE]);
-		dup2(pipefd[PREAD], STDIN_FILENO);
-		waitpid(pid, NULL, WNOHANG);
-	}
-	else
-		ft_error("while forking process");
-}
-
+/*
 void	ft_pipex(int argc, char **argv, char **envp)
 {
 	int		i;
@@ -63,3 +39,4 @@ void	ft_pipex(int argc, char **argv, char **envp)
 	ft_exec(argv[i], envp);
 	wait(CHILD);
 }
+*/

@@ -28,11 +28,16 @@ VFLAGS =	--leak-check=full\
 			--errors-for-leak-kinds=all
 
 SRR = ft_pipex pathutil
-SRC = $(addsuffix .c, $(SRR))
-OBJ = $(SRC:%.c=%.o)
+ROM = main
+ROB = main ft_pipex
 
-POM = main.o
-POB = main_bonus.o
+SRC = $(addsuffix .c, $(SRR))
+SOM = $(addsuffix .c, $(ROM))
+SOB = $(addsuffix _bonus.c, $(ROB))
+
+OBJ = $(SRC:%.c=%.o)
+OBM = $(SOM:%.c=%.o)
+OBB = $(SOB:%.c=%.o)
 
 define make_libft
 	make all -C $(LIBFT)/
@@ -46,7 +51,7 @@ TEST_ARG = infile 'ls -l' 'wc -l' outfile
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-$(NAME): $(POM) $(OBJ)
+$(NAME): $(OBM) $(OBJ)
 	$(call make_libft)
 	$(CC) $(CFLAGS) -o $@ $^ $(LIBFT_PATH)
 # 	$@ -> curr. target. name
@@ -54,13 +59,13 @@ $(NAME): $(POM) $(OBJ)
 
 all: $(NAME)
 
-bonus: $(POB) $(OBJ)
+bonus: $(OBB) $(OBJ)
 	$(call make_libft)
 	$(CC) $(CFLAGS) -o $(NAME) $^ $(LIBFT_PATH)
 
 clean:
 	make clean -C $(LIBFT)
-	$(RM) $(OBJ)
+	$(RM) $(OBJ) $(OBM) $(OBB)
 
 fclean: clean
 	make fclean -C $(LIBFT)
