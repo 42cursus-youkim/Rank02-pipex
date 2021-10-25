@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: youkim <youkim@student.42seoul.kr>         +#+  +:+       +#+         #
+#    By: youkim < youkim@student.42seoul.kr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/08/08 22:15:49 by youkim            #+#    #+#              #
-#    Updated: 2021/08/08 22:15:49 by youkim           ###   ########.fr        #
+#    Created: 2021/10/25 10:23:18 by youkim            #+#    #+#              #
+#    Updated: 2021/10/25 10:23:18 by youkim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,10 +48,16 @@ endef
 TEST_ARG = infile 'ls -l' 'wc -l' outfile
 # TEST_ARG = infile "awk '{count++} END {print count}'" 'wc -l' outfile
 
+ifdef BONUS
+	OBJ_MODE = $(OBB)
+else
+	OBJ_MODE = $(OBM)
+endif
+
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-$(NAME): $(OBM) $(OBJ)
+$(NAME): $(OBJ_MODE) $(OBJ)
 	$(call make_libft)
 	$(CC) $(CFLAGS) -o $@ $^ $(LIBFT_PATH)
 # 	$@ -> curr. target. name
@@ -59,9 +65,8 @@ $(NAME): $(OBM) $(OBJ)
 
 all: $(NAME)
 
-bonus: $(OBB) $(OBJ)
-	$(call make_libft)
-	$(CC) $(CFLAGS) -o $(NAME) $^ $(LIBFT_PATH)
+bonus:
+	@make BONUS=true all
 
 clean:
 	make clean -C $(LIBFT)
